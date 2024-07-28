@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hodlinfo Clone</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <h1>Hodlinfo Clone</h1>
+      </div>
+      <div class="menus">
+        <button name="currency" id="currency" class="header-button">INR</button>
+        <select name="crypto" id="crypto" class="header-button"></select>
+        <button id="buy-crypto" class="header-button">Buy Btc</button>
+      </div>
+      <div class="side-icons">
+        <div>
+          <div class="timer"></div>
+          <button class="connect">Connect Telegram</button>
+          <label class="switch">
+            <input type="checkbox" />
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="cryptoHolder">
+        <!-- <h3>.12</h3>
+        <h3>12</h3>
+        <h1>Btc</h1>
+        <h3>33</h3>
+        <h3>44</h3> -->
+      </div>
+      <table id="ticker-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Last Price</th>
+            <th>Buy Price</th>
+            <th>Sell Price</th>
+            <th>Volume</th>
+            <th>Base Unit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Data will be inserted here dynamically -->
+        </tbody>
+      </table>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
