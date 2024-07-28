@@ -1,4 +1,4 @@
-// backend/db.js
+
 const mongoose = require("mongoose");
 require("dotenv").config();
 
@@ -15,15 +15,8 @@ const connectDB = async () => {
   }
 };
 
-const TickerSchema = new mongoose.Schema({
-  name: String,
-  last: Number,
-  buy: Number,
-  sell: Number,
-  volume: Number,
-  base_unit: String,
-});
 
-const Ticker = mongoose.model("Ticker", TickerSchema);
 
-module.exports = { connectDB, Ticker };
+
+
+module.exports = { connectDB };

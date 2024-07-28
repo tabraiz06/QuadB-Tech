@@ -1,10 +1,10 @@
-// backend/server.js
 const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
-const { connectDB, Ticker } = require("./db");
+const { connectDB } = require("./db");
 require("dotenv").config();
-
+const Api = require("./routes/api");
+const Ticker = require("./model/tickerModel");
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -17,7 +17,7 @@ const fetchAndStoreData = async () => {
   try {
     const response = await axios.get("https://api.wazirx.com/api/v2/tickers");
     const tickers = Object.values(response.data).slice(0, 10);
-    
+
     await Ticker.deleteMany({});
 
     const tickerDocs = tickers.map((ticker) => ({
@@ -40,15 +40,7 @@ const fetchAndStoreData = async () => {
 setInterval(fetchAndStoreData, 60000);
 fetchAndStoreData();
 
-app.get("/api/tickers", async (req, res) => {
-  try {
-    const tickers = await Ticker.find();
-    res.json(tickers);
-  } catch (error) {
-    console.error("Error fetching tickers", error);
-    res.status(500).send("Server error");
-  }
-});
+app.use(Api);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
